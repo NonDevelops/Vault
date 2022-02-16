@@ -1,5 +1,8 @@
 const Discord = require("discord.js")
 const command = require('./command.js')
+const express = require('express');
+const app = express();
+const port = 3000;
 const config = require('./config.json')
 const client = new Discord.Client({
   intents: [
@@ -10,7 +13,9 @@ const client = new Discord.Client({
   ]
 })
 
+app.get('/', (req, res) => res.send('Bot made by NonExistent'));
 
+app.listen(port, () => console.log(`UptimeRobot listening at http://localhost:${port}`));
 
 client.login(process.env.TOKEN)
 
